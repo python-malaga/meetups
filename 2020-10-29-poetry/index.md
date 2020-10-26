@@ -105,10 +105,6 @@ build-backend = "poetry.masonry.api"
 - Package publishing
 
 ---
-
-# Demo
-
----
 ## Instalación
 
 ```bash
@@ -238,4 +234,4 @@ poetry publish
 - poetry search, busca paquetes en indices remotos, publicos o privados.
 
 ---
-# FIN
+# DEMO
