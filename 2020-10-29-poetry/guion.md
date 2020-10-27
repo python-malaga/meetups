@@ -33,3 +33,9 @@
 - Si ejecutamos el comando poetry install sin un fichero lock, poetry buscará las últimas versiones de las dependencias que tenemos, en caso de existir, respetará aquellas que se encuentran dentro del fichero.
 - Una vez que tenemos nuestra libreria lista, procedemos a la construcción de la misma, al usar la estructura de ficheros pyproject.toml, toda la información ya se encuentra ahí por lo que ejecutando el comando poetry build, nos creará una carpeta "dist" donde incluira todos los builds tanto sdist como wheel.
 - El siguiente paso es publicarlo al index con el poetry publish
+
+
+
+
+## Demo
+- preparamos un proyecto vacio en una carpeta vacia. 
