@@ -2,8 +2,15 @@
 marp: true
 
 ---
+![width:500px bg left](img/python_malaga.png "python málaga")
 
 # Gestión de paquetes en Python con Poetry
+
+- ![width:30px](img/twitter.jpg "wewantyou") @python_malaga
+- ![width:30px](img/meetup.png "wewantyou") /es/python_malaga/
+- ![width:30px](img/telegram.jpeg "wewantyou") python_malaga
+
+
 
 ---
 
@@ -119,6 +126,13 @@ curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poet
 ```bash
 poetry self update
 ```
+
+---
+
+## Comandos
+
+![width:600px bg right](img/commands.png "python málaga")
+
 ---
 
 ## Iniciamos proyecto
