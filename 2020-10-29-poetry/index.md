@@ -13,30 +13,40 @@ marp: true
 
 
 ---
+# Distribucion de paquetes en Python
 
-# wheels vs sdist
+- Es probable que en algun momento necesitemos distribuir un paquete de python a mas gente.
 
-Actualmente, la distribucion de paquetes en python en PyPI se hace en dos formatos:
+- Para facilitar el proceso de instalacion, Python proporciona herrmientas de "empaquetado".
 
-- **wheel**: es el "artefacto" o "producto final " que se va a instalar.
-
-- **source distribution o sdist**: un fichero tar.gz con el codigo fuente y a partir del cual se va a poder crear la wheel.
-
----
-
-![](dist.png)
+- La herramienta que hasta hace poco unicamente se podia utilizar es `setuptools`. 
 
 
 ---
-La genracion se hace por medio de la libreria setuptools:
+# setuptools y el fichero setup.py
 
-**sdist**:
+- Para distribuir un paquete usando `setuptools`, debemos proporcionar el fichero `setup.py` en la raiz de nuestro proyecto.
+
+- Este fichero incluye la informacion necesaria para instalar el paquete, tal
+como el numero de version, dependencias, etc.
+
+---
+
+![](setup.py.png)
+
+---
+
+# Formatos de empaquetado: wheels vs sdist
+
+La distribucion de paquetes en python se puede hacer hace en dos formatos:
+
+- **wheel**: es el "artefacto" o "producto final " que se instala. Tendremos que crear una wheel distina para combinacion de S.O., version de python y arquitectura el que se pueda instalar nuestro proyecto.
 
 ```
 python setup.py sdist
 ```
 
-**wheel**:
+- **source distribution o sdist**: un fichero tar.gz con el codigo fuente y metadatos a partir del cual se puede crear la wheel. 
 
 ```
 python setup.py bdist_wheel
@@ -44,15 +54,40 @@ python setup.py bdist_wheel
 
 ---
 
-# Instalacion con pip
+# Subida a Pypi
 
-```bash
-pip install psycopg2
+Una vez hemos generado las distribuciones, estariamos en disposicion de subir nuestro proyecto a pypi usando otra herramienta, twine:
+
+```
+twine upload my_project dist/*
 ```
 
-- En caso de que haya una wheel para nuestro s.o., interprete, y arquitectura, pip descargara la wheel directamente de pypi.
-- En caso contrario tendra que generarla a partir del sdist.
-- Para generar la wheel, PIP ASUME QUE TENEMOS INSTALADAS las librerias `setuptools` y `wheel`.
+---
+
+# Ejemplo: libreria numpy en pypi
+
+![](numpy.png)
+
+---
+
+# Instalacion de un paquete con pip
+
+Que sucede cuando instalo por ejemplo `numpy`?
+
+```bash
+pip install numpy
+```
+
+1. `pip` se conecta a `pypi` e intenta descargarse una wheel compatible con nuestro sistema.
+2. Si existe una `wheel`, se la descarga y la instala en nuestro sistema.
+3. En caso de no existir, `pip` se descargara la distribucion  en formato `sdist` y tendra que general la wheel en nuestro sistema despues.
+
+---
+
+Para generar la `wheel` en nuestro sistema PIP ASUME QUE TENEMOS INSTALADA localmente la libreria `setuptools`.
+
+- `setuptools` no forma parte de la libreria estandar.
+- Si quiero usar otra herramienta para generar wheels distinta de `setuptools` es un problema.
 
 ---
 
@@ -66,6 +101,7 @@ Para evitar esta dependencia de setuptools hacen falta:
 ---
 
 # Fichero pyproject.toml
+
 De esta forma, podre seguir usando setuptools como hasta ahora:
 
 ```
@@ -75,13 +111,24 @@ requires = ["setuptools", "wheel"]
 
 Pero tambien, podre usar otras herramientas, como poetry:
 
-
 ```
 [build-system]
 requires = ["poetry>=0.12"]
 build-backend = "poetry.masonry.api"
 ```
 
+---
+# Una herramienta para gobernarlos a todos
+Aparte de todo el proceso que hay que hacer para distribuir un paquete en pypi, normalmente tenemos que lidiar:
+
+- entornos virtuales (virtualenv, pipenv)
+- distinas versiones de interpretes (pyenv)
+- gestion de dependencias
+- configuracion de herramientas (configuracion de flake8, pytest, etc..)
+
+Todo esto implica ficheros de configuacion distintos, comandos distintos, opciones distintas, etc..
+
+No estaria guai poder usar la misma herramienta para gestionarlo todo? Pues ya se puede con `poetry`
 
 ---
 
