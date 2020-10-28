@@ -17,9 +17,9 @@ marp: true
 
 - Es probable que en algun momento necesitemos distribuir un paquete de python a mas gente.
 
-- Para facilitar el proceso de instalacion, Python proporciona herrmientas de "empaquetado".
+- Para facilitar el proceso de instalacion, Python proporciona herramientas de "empaquetado".
 
-- La herramienta que hasta hace poco unicamente se podia utilizar es `setuptools`. 
+- La herramienta que hasta hace poco se podia utilizar es unicamente `setuptools`. 
 
 
 ---
