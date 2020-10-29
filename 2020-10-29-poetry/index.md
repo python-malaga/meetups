@@ -56,6 +56,8 @@ python setup.py sdist
 
 # Subida a Pypi
 
+Tras ejecutar estos comandos tendremos una carpeta `dist` que contendra el paquete que hemos creado con los comandos anteriores (tanto la wheel como el sdist).
+
 Una vez hemos generado las distribuciones, estariamos en disposicion de subir nuestro proyecto a pypi usando otra herramienta, twine:
 
 ```
@@ -66,11 +68,14 @@ twine upload my_project dist/*
 
 # Ejemplo: libreria numpy en pypi
 
+[numpy](https://pypi.org/project/numpy/#files)
+
 ![](numpy.png)
 
 ---
 
 # Instalacion de un paquete con pip
+
 
 Que sucede cuando instalo por ejemplo `numpy`?
 

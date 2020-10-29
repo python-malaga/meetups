@@ -23,10 +23,10 @@
 <p>Es probable que en algun momento necesitemos distribuir un paquete de python a mas gente.</p>
 </li>
 <li>
-<p>Para facilitar el proceso de instalacion, Python proporciona herrmientas de &quot;empaquetado&quot;.</p>
+<p>Para facilitar el proceso de instalacion, Python proporciona herramientas de &quot;empaquetado&quot;.</p>
 </li>
 <li>
-<p>La herramienta que hasta hace poco unicamente se podia utilizar es <code>setuptools</code>.</p>
+<p>La herramienta que hasta hace poco se podia utilizar es unicamente <code>setuptools</code>.</p>
 </li>
 </ul>
 </section>
@@ -51,22 +51,24 @@ como el numero de version, dependencias, etc.</p>
 <ul>
 <li><strong>wheel</strong>: es el &quot;artefacto&quot; o &quot;producto final &quot; que se instala. Tendremos que crear una wheel distina para combinacion de S.O., version de python y arquitectura el que se pueda instalar nuestro proyecto.</li>
 </ul>
-<pre><code><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-keyword">python</span> setup.<span class="hljs-keyword">py</span> sdist
+<pre><code><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-keyword">python</span> setup.<span class="hljs-keyword">py</span> bdist_wheel
 </span></span></foreignObject></svg></code></pre>
 <ul>
 <li><strong>source distribution o sdist</strong>: un fichero tar.gz con el codigo fuente y metadatos a partir del cual se puede crear la wheel.</li>
 </ul>
-<pre><code><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-keyword">python</span> setup.<span class="hljs-keyword">py</span> bdist_wheel
+<pre><code><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-keyword">python</span> setup.<span class="hljs-keyword">py</span> sdist
 </span></span></foreignObject></svg></code></pre>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="6">
 <h1>Subida a Pypi</h1>
+<p>Tras ejecutar estos comandos tendremos una carpeta <code>dist</code> que contendra el paquete que hemos creado con los comandos anteriores (tanto la wheel como el sdist).</p>
 <p>Una vez hemos generado las distribuciones, estariamos en disposicion de subir nuestro proyecto a pypi usando otra herramienta, twine:</p>
 <pre><code><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap>twine upload my_project <span class="hljs-keyword">dist/*
 </span></span></span></foreignObject></svg></code></pre>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="7">
 <h1>Ejemplo: libreria numpy en pypi</h1>
+<p><a href="https://pypi.org/project/numpy/#files">numpy</a></p>
 <p><img src="numpy.png" alt="" /></p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="8">
@@ -109,15 +111,15 @@ como el numero de version, dependencias, etc.</p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="12">
 <h1>Una herramienta para gobernarlos a todos</h1>
-<p>Aparte de todo el proceso que hay que hacer para distribuir un paquete en pypi, normalmente tenemos que lidiar:</p>
+<p>Aparte de todo el proceso que hay que hacer para distribuir un paquete en pypi, durante el proceso de desarrollo tenemos que lidiar con:</p>
 <ul>
 <li>entornos virtuales (virtualenv, pipenv)</li>
 <li>distinas versiones de interpretes (pyenv)</li>
-<li>gestion de dependencias</li>
-<li>configuracion de herramientas (configuracion de flake8, pytest, etc..)</li>
+<li>gestion de dependencias en (requirements.txt y en <a href="http://setup.py">setup.py</a>)</li>
+<li>configuracion de herramientas diversas(flake8, pytest, etc..)</li>
 </ul>
 <p>Todo esto implica ficheros de configuacion distintos, comandos distintos, opciones distintas, etc..</p>
-<p>No estaria guai poder usar la misma herramienta para gestionarlo todo? Pues ya se puede con <code>poetry</code></p>
+<p>¿No molaria poder usar la misma herramienta para gestionarlo todo? Pues ya se puede con <code>poetry</code></p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="13">
 <h1>Poetry</h1>
