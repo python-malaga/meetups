@@ -43,13 +43,13 @@ La distribucion de paquetes en python se puede hacer hace en dos formatos:
 - **wheel**: es el "artefacto" o "producto final " que se instala. Tendremos que crear una wheel distina para combinacion de S.O., version de python y arquitectura el que se pueda instalar nuestro proyecto.
 
 ```
-python setup.py sdist
+python setup.py bdist_wheel
 ```
 
 - **source distribution o sdist**: un fichero tar.gz con el codigo fuente y metadatos a partir del cual se puede crear la wheel. 
 
 ```
-python setup.py bdist_wheel
+python setup.py sdist
 ```
 
 ---
@@ -119,16 +119,16 @@ build-backend = "poetry.masonry.api"
 
 ---
 # Una herramienta para gobernarlos a todos
-Aparte de todo el proceso que hay que hacer para distribuir un paquete en pypi, normalmente tenemos que lidiar:
+Aparte de todo el proceso que hay que hacer para distribuir un paquete en pypi, durante el proceso de desarrollo tenemos que lidiar con:
 
 - entornos virtuales (virtualenv, pipenv)
 - distinas versiones de interpretes (pyenv)
-- gestion de dependencias
-- configuracion de herramientas (configuracion de flake8, pytest, etc..)
+- gestion de dependencias en (requirements.txt y en setup.py)
+- configuracion de herramientas diversas(flake8, pytest, etc..)
 
 Todo esto implica ficheros de configuacion distintos, comandos distintos, opciones distintas, etc..
 
-No estaria guai poder usar la misma herramienta para gestionarlo todo? Pues ya se puede con `poetry`
+¿No molaria poder usar la misma herramienta para gestionarlo todo? Pues ya se puede con `poetry`
 
 ---
 
